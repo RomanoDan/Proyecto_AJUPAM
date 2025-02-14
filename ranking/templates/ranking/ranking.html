@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ranking de Jugadores</title>
+        {% load static %}
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                text-align: center;
+                margin: 20px;
+                background-image: url("{% static 'img/fondo.jpg' %}");
+                background-size: contain;
+                background-position: center;
+                background-attachment: fixed;
+                color: white; 
+            }
+            nav a {
+                text-decoration: none;
+                color: white;
+                background-color: #ffcc00; /* Color amarillo */
+                padding: 10px 20px;
+                border-radius: 5px;
+                font-weight: bold;
+                transition: background 0.3s, transform 0.2s;
+            }
+    
+            nav a:hover {
+                background-color: #ff9900; /* Cambio de color al pasar el mouse */
+                transform: scale(1.1); /* Pequeño zoom */
+            }
+
+            table {
+                width: 80%;
+                margin: auto;
+                border-collapse: collapse;
+                background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco semi-transparente */
+                color: black; /* Texto negro dentro de la tabla */
+            }
+            th, td {
+                border: 1px solid #ddd;
+                padding: 8px;
+            }
+            th {
+                background-color: rgb(236, 253, 0);
+            }
+        </style>
+    </head>
+<body>
+
+   
+
+    <nav>
+        <a href={% url "inicio" %}>Inicio</a>
+        <a href={% url "ranking" %}>Listado de Jugadores</a>
+        <a href={% url "agregar_jugador" %}>Agregar Jugador</a>
+    </nav>
+    <h2>Ranking de Jugadores</h2>
+    <form action="">
+        {{formulario.as_p}}
+        <input type="submit"value="Buscar">
+    </form>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Puntos</th>
+                <th>Participaciones</th>
+                <th>Promedio</th>
+            </tr>
+        </thead>
+        <tbody>
+           
+            {% for jugador in jugadores %}
+            <tr>
+                <td>{{ jugador.nombre }}</td>
+                <td>{{ jugador.apellido }}</td>
+                <td>{% if jugador.puntos is None %}
+                    0
+                {% else %}
+                    {{ jugador.puntos }}
+                {% endif %}</td>
+
+                <td>{% if jugador.participaciones is None %}
+                    0
+                {% else %}
+                    {{ jugador.participaciones }}
+                {% endif %}</td>
+                <td>{{ jugador.promedio }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
