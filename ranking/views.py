@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.db.utils import IntegrityError
 from django.http import HttpResponse
 from .models import Jugador
 from .forms import AgregarJugador, BuscarJugador
@@ -25,13 +26,17 @@ def agregar_jugador(request):
     if request.method == 'POST':
         formulario = AgregarJugador(request.POST)
         if formulario.is_valid():
-            nombre = formulario.cleaned_data.get('nombre')
-            apellido = formulario.cleaned_data.get('apellido')
-            documento = formulario.cleaned_data.get('documento')
-            categoria = formulario.cleaned_data.get('categoria')
+            try:
+                nombre = formulario.cleaned_data.get('nombre')
+                apellido = formulario.cleaned_data.get('apellido')
+                documento = formulario.cleaned_data.get('documento')
+                categoria = formulario.cleaned_data.get('categoria')
             
-            jugador = Jugador(nombre = nombre,apellido = apellido,documento = documento,categoria = categoria)
-            jugador.save()
+                jugador = Jugador(nombre = nombre,apellido = apellido,documento = documento,categoria = categoria)
+                jugador.save()
+            except IntegrityError:
+                formulario.add_error('documento', "El documento ya existe en la base de jugadores, intente con otro, por favor.")
+                return render(request, 'ranking/agregar_jugador.html', {'formulario': formulario})
             
             return redirect('ranking')
             
