@@ -14,15 +14,15 @@ Ademas se podrá hacer seguimiento de los distintos torneos que se van realizand
    
 2. **Crear y configurar el entorno virtual:**
     Posicionados en la carpeta del proyecto:
-    python -m venv venv
-    .\venv\Scripts\activate
-    pip install -r requirements.txt
-    python manage.py makemigrations
-    python manage.py migrate
+- python -m venv venv
+- .\venv\Scripts\activate
+- pip install -r requirements.txt
+- python manage.py makemigrations
+- python manage.py migrate
 
-3. **Iniciar el servidor y acceder a la web local:**
-    python manage.py runserver
-    Accede desde el navegador a http://127.0.0.1:8000/
+4. **Iniciar el servidor y acceder a la web local:**
+- python manage.py runserver
+- Accede desde el navegador a http://127.0.0.1:8000/
 
 ## 🛠️ Funcionalidades
 
