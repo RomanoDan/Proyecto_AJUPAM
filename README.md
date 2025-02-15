@@ -28,8 +28,8 @@ Ademas se podrá hacer seguimiento de los distintos torneos que se van realizand
 
 En el inicio de la web, tendrás la opción de navegar por las opciones disponibles de la web.
 
-**Listado de Jugadores**
+**Listado de Jugadores:**
         En este apartado se podrá visualizar los jugadores cargados en la base de datos y filtrar la busqueda por nombre o categoria.
 
-**Agregar Jugador**
+**Agregar Jugador:**
         En este apartado se podrá realizar la carga de un Jugador nuevo a la base de datos con sus correspondientes datos.
