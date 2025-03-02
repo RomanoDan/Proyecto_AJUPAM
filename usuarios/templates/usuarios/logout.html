@@ -1,45 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio</title>
-</head>
+{% extends "template_base.html" %}
 
+{% block title_head %}Cerrar Sesión{% endblock title_head %}
+{% block title %}Cerrar Sesión{% endblock title %}
 
-    {% load static %}
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 20px;
-            background-image: url("{% static 'img/fondo.jpg' %}");
-            background-size: contain;
-            background-position: center;
-            background-attachment: fixed;
-            color: white; 
-        }
-        nav a {
-            text-decoration: none;
-            color: white;
-            background-color: #ffcc00; /* Color amarillo */
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: background 0.3s, transform 0.2s;
-        }
-
-        nav a:hover {
-            background-color: #ff9900; /* Cambio de color al pasar el mouse */
-            transform: scale(1.1); /* Pequeño zoom */
-        }
-    </style>
-</head>
-<body>
+{% block contenido %}
 Cerraste sesión correctamente.
-</body>
-
-<nav>
-    <a href={% url "inicio" %}>Inicio</a>
-</html>
-
+{% endblock contenido %}

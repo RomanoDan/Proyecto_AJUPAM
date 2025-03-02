@@ -1,36 +1,9 @@
-<!DOCTYPE html>
-<html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Ranking de Jugadores</title>
-        {% load static %}
-        <style>
-            body {
-                font-family: Arial, sans-serif;
-                text-align: center;
-                margin: 20px;
-                background-image: url("{% static 'img/fondo.jpg' %}");
-                background-size: contain;
-                background-position: center;
-                background-attachment: fixed;
-                color: white; 
-            }
-            nav a {
-                text-decoration: none;
-                color: white;
-                background-color: #ffcc00; /* Color amarillo */
-                padding: 10px 20px;
-                border-radius: 5px;
-                font-weight: bold;
-                transition: background 0.3s, transform 0.2s;
-            }
-    
-            nav a:hover {
-                background-color: #ff9900; /* Cambio de color al pasar el mouse */
-                transform: scale(1.1); /* Pequeño zoom */
-            }
+{% extends "template_base.html" %}
 
+{% block title_head %}Ranking{% endblock title_head %}
+{% block title %}Listado de jugadores{% endblock title %}
+{% block contenido %}
+        <style>
             table {
                 width: 80%;
                 margin: auto;
@@ -46,17 +19,8 @@
                 background-color: rgb(236, 253, 0);
             }
         </style>
-    </head>
-<body>
-
-   
-
-    <nav>
-        <a href={% url "inicio" %}>Inicio</a>
-        <a href={% url "ranking" %}>Listado de Jugadores</a>
-        <a href={% url "agregar_jugador" %}>Agregar Jugador</a>
-    </nav>
-    <h2>Ranking de Jugadores</h2>
+    
+    
     <form action="">
         {{formulario.as_p}}
         <input type="submit"value="Buscar">
@@ -97,5 +61,5 @@
             {% endfor %}
         </tbody>
     </table>
-</body>
-</html>
+
+    {% endblock contenido %}

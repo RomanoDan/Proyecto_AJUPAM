@@ -1,57 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio</title>
-</head>
-<body>
+{% extends "template_base.html" %}
 
-    {% load static %}
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 20px;
-            background-image: url("{% static 'img/fondo.jpg' %}");
-            background-size: contain;
-            background-position: center;
-            background-attachment: fixed;
-            color: white; 
-        }
-        nav a {
-            text-decoration: none;
-            color: white;
-            background-color: #ffcc00; /* Color amarillo */
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: background 0.3s, transform 0.2s;
-        }
+{% block title_head %}Inicio{% endblock title_head %}
 
-        nav a:hover {
-            background-color: #ff9900; /* Cambio de color al pasar el mouse */
-            transform: scale(1.1); /* Pequeño zoom */
-        }
-    </style>
-</head>
-<body>
-
-
-
-<nav>
-    <a href={% url "inicio" %}>Inicio</a>
-    <a href={% url "ranking" %}>Listado de Jugadores</a>
-    <a href={% url "agregar_jugador" %}>Agregar Jugador</a>
-    <a href={% url "login" %}>Iniciar sesion</a>
-    <a href={% url "logout" %}>Cerrar sesion</a>
-</nav>
-
+{% block contenido %}
 <div style="display: flex; justify-content: center; align-items: center; height: 400px; margin-top: 115px;">
     <iframe src="https://www.instagram.com/p/Cbh99Usre9U/embed" width="500" height="600" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
 </div>
-
-    
-</body>
-</html>
-
+{% endblock contenido %}
