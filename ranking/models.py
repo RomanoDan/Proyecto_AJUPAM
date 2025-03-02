@@ -19,7 +19,7 @@ class Jugador(models.Model):
     puntos = models.IntegerField(null=True,blank=True)
     participaciones = models.IntegerField(null=True,blank=True)
     foto = models.ImageField(null=True,blank=True, upload_to='fotosplayers')
-    fecha_creacion = models.DateField(null=True,blank=True)
+    fecha_creacion = models.DateField(null=True,blank=True,auto_now_add=True)
 
     def promedio(self):
         return self.puntos / self.participaciones if self.participaciones else 0

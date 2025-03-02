@@ -23,7 +23,7 @@ class BuscarJugador(forms.Form):
     categoria = forms.ChoiceField(choices=categorias, required=False)
 
 class ModificarJugador(forms.ModelForm):
-    
+    fecha_creacion = forms.DateField(required=False, widget=forms.DateInput(attrs={'type': 'date'}))
     class Meta:
         model = Jugador
         fields = "__all__"

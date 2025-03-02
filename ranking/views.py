@@ -33,8 +33,6 @@ def agregar_jugador(request):
                 apellido = formulario.cleaned_data.get('apellido')
                 documento = formulario.cleaned_data.get('documento')
                 categoria = formulario.cleaned_data.get('categoria')
-                # Agregar para que se ponga por defecto la fecha de creación.
-                # Agregar para que puedan cargar foto
             
                 jugador = Jugador(nombre = nombre,apellido = apellido,documento = documento,categoria = categoria)
                 jugador.save()
@@ -56,7 +54,7 @@ def ver_jugador(request,jugador_id):
 class ModificarJugadorView(UpdateView):
     model = Jugador
     template_name = "ranking/CBV/modificar_jugador.html"
-    fields ="__all__"
+    form_class = ModificarJugador
     success_url = reverse_lazy("ranking")
 
 class EliminarJugadorView(DeleteView):
