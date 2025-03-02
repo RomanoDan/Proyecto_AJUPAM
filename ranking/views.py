@@ -4,7 +4,8 @@ from .models import Jugador
 from .forms import AgregarJugador, BuscarJugador, ModificarJugador
 from django.views.generic.edit import UpdateView,DeleteView
 from django.urls import reverse_lazy
-from datetime import date
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 
 def ranking(request):
     jugadores = Jugador.objects.all().order_by('-puntos')  # Ordenado por puntos
@@ -22,6 +23,7 @@ def ranking(request):
 def inicio(request):
     return render(request, "ranking/inicio.html")
 
+@login_required
 def agregar_jugador(request):
     formulario = AgregarJugador()
     
@@ -51,13 +53,13 @@ def ver_jugador(request,jugador_id):
 
 # CBV
 
-class ModificarJugadorView(UpdateView):
+class ModificarJugadorView(LoginRequiredMixin, UpdateView):
     model = Jugador
     template_name = "ranking/CBV/modificar_jugador.html"
     form_class = ModificarJugador
     success_url = reverse_lazy("ranking")
 
-class EliminarJugadorView(DeleteView):
+class EliminarJugadorView(LoginRequiredMixin, DeleteView):
     model = Jugador
     template_name = "ranking/CBV/eliminar_jugador.html"
     success_url = reverse_lazy("ranking")

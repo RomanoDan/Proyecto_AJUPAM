@@ -4,9 +4,15 @@
 {% block title %}Listado de jugadores{% endblock title %}
 
 {% block contenido %}
-<div class="form-container">
+<div class="search-form">
     <form action="" method="GET">
-        {{ formulario.as_p }}
+        <input type="text" name="nombre" placeholder="Nombre">
+        <select name="categoria">
+            <option value="">Categoría</option>
+            {% for value, label in formulario.fields.categoria.choices %}
+                <option value="{{ value }}">{{ label }}</option>
+            {% endfor %}
+        </select>
         <input type="submit" value="Buscar">
     </form>
 </div>
