@@ -3,6 +3,9 @@ from django.db.utils import IntegrityError
 from django.http import HttpResponse
 from .models import Jugador
 from .forms import AgregarJugador, BuscarJugador
+from django.views.generic.edit import UpdateView
+from django.urls import reverse_lazy
+from datetime import date
 
 def ranking(request):
     jugadores = Jugador.objects.all().order_by('-puntos')  # Ordenado por puntos
@@ -31,6 +34,8 @@ def agregar_jugador(request):
                 apellido = formulario.cleaned_data.get('apellido')
                 documento = formulario.cleaned_data.get('documento')
                 categoria = formulario.cleaned_data.get('categoria')
+                # Agregar para que se ponga por defecto la fecha de creación.
+                # Agregar para que puedan cargar foto
             
                 jugador = Jugador(nombre = nombre,apellido = apellido,documento = documento,categoria = categoria)
                 jugador.save()
@@ -42,3 +47,16 @@ def agregar_jugador(request):
             
     return render(request, 'ranking/agregar_jugador.html', {'formulario': formulario})
 
+def eliminar_jugador(request,jugador_id):
+    ...
+    return redirect('listado_jugadores')
+
+def ver_jugador(request,jugador_id):
+    jugador = Jugador.objects.get(id=jugador_id)
+    return render(request, 'inicio/ver_jugador_html', {'jugador': jugador})
+
+class ModificarJugador(UpdateView):
+    model = Jugador
+    template_name = "modificar_jugador.html"
+    fields ="__all__"
+    success_url = reverse_lazy("ranking")
