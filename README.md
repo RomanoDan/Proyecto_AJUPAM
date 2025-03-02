@@ -10,7 +10,7 @@ Ademas se podrá hacer seguimiento de los distintos torneos que se van realizand
 
 1. **Clonar el repositorio:**
    Desde Git Bash:
-   git clone https://github.com/RomanoDan/Proyecto_AJUPAM.git
+   git clone https://github.com/RomanoDan/RomanoDaniel-Proyecto_AJUPAM
    
 2. **Crear y configurar el entorno virtual:**
     Posicionados en la carpeta del proyecto:
