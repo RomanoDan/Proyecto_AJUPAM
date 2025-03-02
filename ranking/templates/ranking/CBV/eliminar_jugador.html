@@ -3,10 +3,11 @@
 {% block title_head %}Eliminar Jugador{% endblock title_head %}
 {% block title %}Confirmación de borrado{% endblock title %}
 {% block contenido %}
-
+<div class="form-container">
     <form action="" method="POST">
         {% csrf_token %}
-        <p>¿Está seguro que desea eliminar al jugador {{jugador.nombre}} {{jugador.apellido}} ?</p>
+        <body>¿Está seguro que desea eliminar al jugador {{jugador.nombre}} {{jugador.apellido}} ?</body>
         <input type="submit"value="Confirmar">
     </form>
+</div>
 {% endblock contenido %}

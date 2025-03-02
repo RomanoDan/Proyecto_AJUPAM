@@ -4,11 +4,13 @@
 {% block title %}Iniciar Sesión{% endblock title %}
 
 {% block contenido %}
+<div class="form-container">
 <form action="" method="POST">
     {% csrf_token %}
     {{formulario}}
     <input type="submit"value="Iniciar sesion">
 </form>
+</div>
 {% endblock contenido %}
 
 

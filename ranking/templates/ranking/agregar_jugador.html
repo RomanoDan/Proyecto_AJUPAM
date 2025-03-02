@@ -3,10 +3,11 @@
 {% block title_head %}Agregar Jugador{% endblock title_head %}
 {% block title %}Agregar Jugador{% endblock title %}
 {% block contenido %}
-
+<div class="form-container">
     <form action="" method="POST">
         {% csrf_token %}
         {{formulario}}
         <input type="submit"value="Agregar jugador">
     </form>
 {% endblock contenido %}
+</div>

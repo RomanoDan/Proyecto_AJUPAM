@@ -2,31 +2,16 @@
 
 {% block title_head %}Ranking{% endblock title_head %}
 {% block title %}Listado de jugadores{% endblock title %}
+
 {% block contenido %}
-        <style>
-            table {
-                width: 80%;
-                margin: auto;
-                border-collapse: collapse;
-                background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco semi-transparente */
-                color: black; /* Texto negro dentro de la tabla */
-            }
-            th, td {
-                border: 1px solid #ddd;
-                padding: 8px;
-            }
-            th {
-                background-color: rgb(236, 253, 0);
-            }
-        </style>
-    
-    
-    <form action="">
-        {{formulario.as_p}}
-        <input type="submit"value="Buscar">
+<div class="form-container">
+    <form action="" method="GET">
+        {{ formulario.as_p }}
+        <input type="submit" value="Buscar">
     </form>
-    
-    <table>
+</div>
+
+    <table class="styled-table">
         <thead>
             <tr>
                 <th>Nombre</th>
@@ -34,32 +19,25 @@
                 <th>Puntos</th>
                 <th>Participaciones</th>
                 <th>Promedio</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
-           
             {% for jugador in jugadores %}
             <tr>
                 <td>{{ jugador.nombre }}</td>
                 <td>{{ jugador.apellido }}</td>
-                <td>{% if jugador.puntos is None %}
-                    0
-                {% else %}
-                    {{ jugador.puntos }}
-                {% endif %}</td>
-
-                <td>{% if jugador.participaciones is None %}
-                    0
-                {% else %}
-                    {{ jugador.participaciones }}
-                {% endif %}</td>
+                <td>{{ jugador.puntos|default:"0" }}</td>
+                <td>{{ jugador.participaciones|default:"0" }}</td>
                 <td>{{ jugador.promedio }}</td>
-                <td> <a href={% url "ver_jugador" jugador.id %}> 👁‍🗨 </a> </td>
-                <td> <a href={% url "modificar_jugador" jugador.id %}> 📝 </a> </td>
-                <td> <a href={% url "eliminar_jugador" jugador.id %}> ❌ </a> </td>
+                <td>
+                    <a href="{% url 'ver_jugador' jugador.id %}" class="action-btn view-btn">👁‍🗨</a>
+                    <a href="{% url 'modificar_jugador' jugador.id %}" class="action-btn edit-btn">📝</a>
+                    <a href="{% url 'eliminar_jugador' jugador.id %}" class="action-btn delete-btn">❌</a>
+                </td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
 
-    {% endblock contenido %}
+{% endblock contenido %}
