@@ -1,4 +1,5 @@
 from django import forms
+from ranking.models import Jugador
 
 categorias = [
         (1, "1"),
@@ -20,3 +21,9 @@ class AgregarJugador(forms.Form):
 class BuscarJugador(forms.Form):
     nombre = forms.CharField(max_length=100, required=False)
     categoria = forms.ChoiceField(choices=categorias, required=False)
+
+class ModificarJugador(forms.ModelForm):
+    
+    class Meta:
+        model = Jugador
+        fields = "__all__"

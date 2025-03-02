@@ -54,9 +54,9 @@
                     {{ jugador.participaciones }}
                 {% endif %}</td>
                 <td>{{ jugador.promedio }}</td>
-                <td>Agregar Boton Ver</td>
-                <td>Agregar Boton Modificar</td>
-                <td>Agregar Boton Eliminar</td>
+                <td> <a href={% url "ver_jugador" jugador.id %}> 👁‍🗨 </a> </td>
+                <td> <a href={% url "modificar_jugador" jugador.id %}> 📝 </a> </td>
+                <td> <a href={% url "eliminar_jugador" jugador.id %}> ❌ </a> </td>
             </tr>
             {% endfor %}
         </tbody>

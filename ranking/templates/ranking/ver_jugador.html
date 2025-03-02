@@ -1,8 +1,17 @@
 {% extends "template_base.html" %}
 
 {% block title_head %}Ver Jugador{% endblock title_head %}
-{% block title %}Ver Jugador{% endblock title %}
+{% block title %}Informacion de {{jugador}}{% endblock title %}
 
 {% block contenido %}
+<ul>
+<li>Foto: {{jugador.foto}}</li>
+<li>Nombre: {{jugador.nombre}}</li>
+<li>Apellido: {{jugador.apellido}}</li>
+<li>Categoria: {{jugador.categoria}}</li>
+<li>Puntos: {{jugador.puntos}}</li>
+<li>Participaciones: {{jugador.participaciones}}</li>
+<li>Fecha de creacion: {{jugador.fecha_creacion}}</li>
 
+</ul>
 {% endblock contenido %}

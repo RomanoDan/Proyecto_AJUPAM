@@ -1,9 +1,8 @@
 from django.shortcuts import render, redirect
 from django.db.utils import IntegrityError
-from django.http import HttpResponse
 from .models import Jugador
-from .forms import AgregarJugador, BuscarJugador
-from django.views.generic.edit import UpdateView
+from .forms import AgregarJugador, BuscarJugador, ModificarJugador
+from django.views.generic.edit import UpdateView,DeleteView
 from django.urls import reverse_lazy
 from datetime import date
 
@@ -47,16 +46,38 @@ def agregar_jugador(request):
             
     return render(request, 'ranking/agregar_jugador.html', {'formulario': formulario})
 
-def eliminar_jugador(request,jugador_id):
-    ...
-    return redirect('listado_jugadores')
 
 def ver_jugador(request,jugador_id):
     jugador = Jugador.objects.get(id=jugador_id)
-    return render(request, 'inicio/ver_jugador_html', {'jugador': jugador})
+    return render(request, 'ranking/ver_jugador.html', {'jugador': jugador})
 
-class ModificarJugador(UpdateView):
+# CBV
+
+class ModificarJugadorView(UpdateView):
     model = Jugador
-    template_name = "modificar_jugador.html"
+    template_name = "ranking/CBV/modificar_jugador.html"
     fields ="__all__"
     success_url = reverse_lazy("ranking")
+
+class EliminarJugadorView(DeleteView):
+    model = Jugador
+    template_name = "ranking/CBV/eliminar_jugador.html"
+    success_url = reverse_lazy("ranking")
+
+
+# Vistas comunes
+
+    # def modificar_jugador(request,jugador_id):
+    #     jugador = Jugador.objects.get(id=jugador_id)    
+    #     if request.method == "POST":
+    #         formulario = ModificarJugador(request.POST, instance=jugador)
+    #         if formulario.is_valid():
+    #             formulario.save()
+    #             return redirect('ranking')
+    #     else:
+    #         formulario = ModificarJugador(instance=jugador)  
+    #     return render(request,'ranking/modificar_jugador.html', {'formulario': formulario}) 
+    # def eliminar_jugador(request,jugador_id):
+    #     jugador = Jugador.objects.get(id=jugador_id)
+    #     jugador.delete()
+    #     return redirect('ranking')

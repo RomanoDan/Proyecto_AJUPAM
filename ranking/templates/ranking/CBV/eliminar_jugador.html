@@ -1,0 +1,12 @@
+{% extends "template_base.html" %}
+
+{% block title_head %}Eliminar Jugador{% endblock title_head %}
+{% block title %}Confirmación de borrado{% endblock title %}
+{% block contenido %}
+
+    <form action="" method="POST">
+        {% csrf_token %}
+        <p>¿Está seguro que desea eliminar al jugador {{jugador.nombre}} {{jugador.apellido}} ?</p>
+        <input type="submit"value="Confirmar">
+    </form>
+{% endblock contenido %}
