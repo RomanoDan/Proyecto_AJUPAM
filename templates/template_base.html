@@ -2,121 +2,125 @@
 <!DOCTYPE html>
 <html lang="es">
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title_head %} Template Base{% endblock title_head %}</title>
-    
-   
+
+
     <style>
         /* 📜 Estilos generales para listas de información */
-    .info-list {
-        width: 50%;
-        margin: 30px auto;
-        padding: 20px;
-        background: rgba(255, 255, 255, 0.9);
-        border-radius: 8px;
-        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-        list-style: none;
-    }
+        .info-list {
+            width: 50%;
+            margin: 30px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            list-style: none;
+        }
 
-    .info-list li {
-        font-size: 18px;
-        color: black;
-        padding: 10px;
-        border-bottom: 1px solid #ddd;
-        align-items: center;
-        gap: 10px;
-    }
+        .info-list li {
+            font-size: 18px;
+            color: black;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            align-items: center;
+            gap: 10px;
+        }
 
-    .info-list li:last-child {
-        border-bottom: none;
-    }
+        .info-list li:last-child {
+            border-bottom: none;
+        }
 
-    .info-list i {
-        color: #ffcc00;
-        font-size: 22px;
-    }
+        .info-list i {
+            color: #ffcc00;
+            font-size: 22px;
+        }
+
         /* 🎨 Estilos generales para formularios */
-    .form-container {
-        width: 20%;
-        margin: 30px auto;
-        padding: 20px;
-        background: rgba(255, 255, 255, 0.9);
-        border-radius: 8px;
-        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-        text-align: left;
-    }
+        .form-container {
+            width: 20%;
+            margin: 30px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: left;
+        }
 
-    .form-container h3 {
-        text-align: center;
-        color: #ffcc00;
-        font-size: 24px;
-        margin-bottom: 15px;
-    }
+        .form-container h3 {
+            text-align: center;
+            color: #ffcc00;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
 
-    .form-container label {
-        font-weight: bold;
-        color: black;
-        display: block;
-        margin: 10px 0 5px;
-    }
+        .form-container label {
+            font-weight: bold;
+            color: black;
+            display: block;
+            margin: 10px 0 5px;
+        }
 
-    .form-container input,
-    .form-container select,
-    .form-container textarea {
-        width: 100%;
-        padding: 8px;
-        border: 2px solid #ddd;
-        border-radius: 5px;
-        font-size: 16px;
-        transition: all 0.3s ease;
-    }
+        .form-container input,
+        .form-container select,
+        .form-container textarea {
+            width: 100%;
+            border: 3px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
 
-    .form-container input:focus,
-    .form-container select:focus,
-    .form-container textarea:focus {
-        border-color: #ffcc00;
-        outline: none;
-        box-shadow: 0 0 5px rgba(255, 204, 0, 0.8);
-    }
+        .form-container input:focus,
+        .form-container select:focus,
+        .form-container textarea:focus {
+            border-color: #ffcc00;
+            outline: none;
+            box-shadow: 0 0 5px rgba(255, 204, 0, 0.8);
+        }
 
-    .form-container button {
-        display: block;
-        width: 100%;
-        padding: 10px;
-        font-size: 18px;
-        background-color: #28a745;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background 0.3s, transform 0.2s;
-        margin-top: 15px;
-    }
+        .form-container button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            font-size: 18px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+            margin-top: 15px;
+        }
 
-    .form-container button:hover {
-        background-color: #218838;
-        transform: scale(1.05);
-    }
+        .form-container button:hover {
+            background-color: #218838;
+            transform: scale(1.05);
+        }
 
-    /* ❗ Mensajes de error */
-    .errorlist {
-        color: red;
-        font-weight: bold;
-        list-style-type: none;
-        padding: 0;
-    }
+        /* ❗ Mensajes de error */
+        .errorlist {
+            color: red;
+            font-weight: bold;
+            list-style-type: none;
+            padding: 0;
+        }
 
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            margin: 20px;
+            margin: 0;
             background-image: url("{% static 'img/fondo.jpg' %}");
             background-size: contain;
             background-position: center;
             background-attachment: fixed;
-            color: black; 
+            color: black;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         /* Menú de navegación */
@@ -138,7 +142,7 @@
         nav a {
             text-decoration: none;
             color: white;
-            font-size: 14px; /* Botones más pequeños */
+            font-size: 14px;
             padding: 8px 15px;
             border-radius: 5px;
             font-weight: bold;
@@ -148,7 +152,7 @@
             gap: 5px;
         }
 
-        /* Botón de Inicio con icono de casa */
+        /* Botón de Inicio */
         .inicio-btn {
             background-color: #28a745;
             border: 2px solid white;
@@ -168,6 +172,20 @@
         .menu-btn:hover {
             background-color: #ff9900;
             transform: scale(1.05);
+        }
+
+        .menu-avatar {
+            width: 25px;
+            /* Ajusta el tamaño de la imagen */
+            height: 20px;
+            border-radius: 50%;
+            /* Hace que la imagen sea redonda */
+            object-fit: cover;
+            /* Evita que la imagen se deforme */
+            vertical-align: middle;
+            /* Alinea la imagen con el texto */
+            margin-right: 5px;
+            /* Espaciado entre la imagen y el texto */
         }
 
         /* Botón de Login */
@@ -193,29 +211,29 @@
         }
 
         /* Ajustar el estilo de los botones de formulario */
-.submit-btn {
-    font-size: 14px;
-    padding: 8px 15px;
-    border: 2px solid white;
-    border-radius: 5px;
-    font-weight: bold;
-    text-align: center;
-    cursor: pointer;
-    transition: background 0.3s, transform 0.2s;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
+        .submit-btn {
+            font-size: 14px;
+            padding: 8px 15px;
+            border: 2px solid white;
+            border-radius: 5px;
+            font-weight: bold;
+            text-align: center;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
 
-/* Específico para el botón de logout dentro de un formulario */
-.logout-btn.submit-btn {
-    background-color: #dc3545;
-}
+        /* Específico para el botón de logout dentro de un formulario */
+        .logout-btn.submit-btn {
+            background-color: #dc3545;
+        }
 
-.logout-btn.submit-btn:hover {
-    background-color: #a71d2a;
-    transform: scale(1.05);
-}
+        .logout-btn.submit-btn:hover {
+            background-color: #a71d2a;
+            transform: scale(1.05);
+        }
 
         /* 🎨 Estilo para el título */
         .titulo {
@@ -228,6 +246,7 @@
             border-bottom: 3px solid #ffcc00;
             display: inline-block;
         }
+
         /* 📌 Estilos de la tabla reutilizables */
         .styled-table {
             width: 90%;
@@ -240,14 +259,16 @@
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
         }
 
-        .styled-table th, .styled-table td {
+        .styled-table th,
+        .styled-table td {
             border: 1px solid #ddd;
             padding: 12px;
             text-align: center;
         }
 
         .styled-table th {
-            background-color: #ffcc00; /* Amarillo dorado */
+            background-color: #ffcc00;
+            /* Amarillo dorado */
             color: black;
             font-weight: bold;
             text-transform: uppercase;
@@ -276,100 +297,167 @@
             transition: background 0.3s, transform 0.2s;
         }
 
-        .view-btn { color: #007bff; }
-        .edit-btn { color: #28a745; }
-        .delete-btn { color: #dc3545; }
+        .view-btn {
+            color: #007bff;
+        }
+
+        .edit-btn {
+            color: #28a745;
+        }
+
+        .delete-btn {
+            color: #dc3545;
+        }
 
         .action-btn:hover {
             transform: scale(1.2);
         }
+
         /* 🎯 Estilo para formularios de búsqueda compactos */
-.search-form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 5px; /* Menor espacio entre elementos */
-    background: rgba(255, 255, 255, 0.9);
-    padding: 5px 10px;
-    border-radius: 8px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-    width: fit-content;
-    margin: 10px auto;
-}
+        .search-form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            /* Menor espacio entre elementos */
+            background: rgba(255, 255, 255, 0.9);
+            padding: 5px 10px;
+            border-radius: 8px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+            width: fit-content;
+            margin: 10px auto;
+        }
 
-/* 🔍 Campos de entrada más pequeños */
-.search-form input[type="text"],
-.search-form select {
-    padding: 5px;
-    border: 1px solid #ffcc00;
-    border-radius: 5px;
-    font-size: 12px;
-    outline: none;
-    width: 120px; /* Tamaño reducido */
-}
+        /* 🔍 Campos de entrada más pequeños */
+        .search-form input[type="text"],
+        .search-form select {
+            padding: 5px;
+            border: 1px solid #ffcc00;
+            border-radius: 5px;
+            font-size: 12px;
+            outline: none;
+            width: 120px;
+            /* Tamaño reducido */
+        }
 
-.search-form input[type="text"]:focus,
-.search-form select:focus {
-    border-color: #ff9900;
-}
+        .search-form input[type="text"]:focus,
+        .search-form select:focus {
+            border-color: #ff9900;
+        }
 
-/* 🔘 Botón de búsqueda más pequeño */
-.search-form input[type="submit"] {
-    background-color: #28a745;
-    color: white;
-    border: 1px solid white;
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 12px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background 0.3s, transform 0.2s;
-}
+        /* 🔘 Botón de búsqueda más pequeño */
+        .search-form input[type="submit"] {
+            background-color: #28a745;
+            color: white;
+            border: 1px solid white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+        }
 
-.search-form input[type="submit"]:hover {
-    background-color: #218838;
-    transform: scale(1.05);
-}
+        .search-form input[type="submit"]:hover {
+            background-color: #218838;
+            transform: scale(1.05);
+        }
+        /* 📌 Footer */
+        .footer {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            font-size: 14px;
+        }
 
+        .footer a {
+            color: #ffcc00;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+
+        .footer a:hover {
+            color: #ff9900;
+        }
+        .main-content {
+            flex: 1; /* Ocupa todo el espacio disponible */
+        }
+        .instagram-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 70vh; /* Se ajusta al tamaño de la pantalla */
+            padding: 20px;
+        }
+        
+        .instagram-frame {
+            width: 100%;
+            max-width: 500px;
+            height: 600px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            background: white;
+        }
     </style>
-    <!-- Cargar FontAwesome para los iconos -->
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    
 </head>
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 <body>
 
-<nav>
-    <!-- Botón "Inicio" alineado a la izquierda con icono de casa -->
-    <a href={% url "inicio" %} class="inicio-btn">
-        <i class="fas fa-home"></i> Inicio
-    </a>
+    <nav>
+        <a href={% url "inicio" %} class="inicio-btn">
+            <i class="fas fa-home"></i> Inicio
+        </a>
 
-    <!-- Menú alineado a la derecha -->
-    <div class="menu-right">
-        <a href={% url "ranking" %} class="menu-btn">📊 Ranking</a>
-        <a href={% url "agregar_jugador" %} class="menu-btn">➕ Agregar Jugador</a>
+        <!-- Menú alineado a la derecha -->
+        <div class="menu-right">
+            <a href={% url "ranking" %} class="menu-btn">📊 Ranking</a>
+            <a href={% url "agregar_jugador" %} class="menu-btn">➕ Agregar Jugador</a>
 
-        {% if request.user.is_authenticated %}
-        <a href={% url "ver_perfil" request.user.id %} class="menu-btn">{{request.user.username}}</a>
+            {% if request.user.is_authenticated %}
+            <a href="{% url 'ver_perfil' request.user.id %}" class="menu-btn">
+                {% if request.user.infoextra.avatar %}
+                <img src="{{ request.user.infoextra.avatar.url }}" alt="Avatar de {{ request.user.username }}" class="menu-avatar">
+                {% else %}
+                <img src="{% static 'img/fotito.jpg' %}" alt="Foto por defecto" class="menu-avatar">
+                {% endif %}
+                {{request.user.username}}
+            </a>
 
-        <form action="{% url 'logout' %}" method="POST">
-            {% csrf_token %}
-            <input class="logout-btn submit-btn" type="submit" value="🚪 Cerrar sesión">
-        </form>
-        {% else %}
-        
-        <a href={% url "login" %} class="login-btn">🔑 Iniciar sesión</a>
-        <a href={% url "registro" %} class="logout-btn">🚪 Registrarse </a>
-        {% endif %}
-        
+            <form action="{% url 'logout' %}" method="POST">
+                {% csrf_token %}
+                <input class="logout-btn submit-btn" type="submit" value="🚪 Cerrar sesión">
+            </form>
+            {% else %}
+
+            <a href={% url "login" %} class="login-btn">🔑 Iniciar sesión</a>
+            <a href={% url "registro" %} class="logout-btn">🚪 Registrarse </a>
+            {% endif %}
+
+        </div>
+    </nav>
+
+
+    <h2 class="titulo">{% block title %}{% endblock title %}</h2>
+
+    <div class ='main-content'>
+    {% block contenido %}
+    {% endblock contenido %}
     </div>
-</nav>
 
-<!-- 🎯 Título bien posicionado -->
-<h2 class="titulo">{% block title %}{% endblock title %}</h2>
-
-{% block contenido %}
-{% endblock contenido %}
+    <footer class="footer">
+        <p>© 2025 Asosiación de Jugadores de Padel Mendocinos - Todos los derechos reservados</p>
+        <p>
+            <a href="{% url 'about' %}">Sobre Mí</a>
+        </p>
+        <p>Síguenos en:
+            <a href="https://www.instagram.com/ajupam.padel"><img src="{% static 'img/ig_logo.png' %}" alt="Instagram" width="20"></a>
+        </p>
+    </footer>
 
 </body>
-</html>
 
+</html>
