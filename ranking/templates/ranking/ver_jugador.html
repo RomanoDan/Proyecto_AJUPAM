@@ -1,11 +1,17 @@
 {% extends "template_base.html" %}
-
+{% load static %}
 {% block title_head %}Ver Jugador{% endblock title_head %}
 {% block title %}Informacion de {{jugador}}{% endblock title %}
 
 {% block contenido %}
 <ul class = 'info-list'>
-<li>Foto: {{jugador.foto}}</li>
+<li>   
+    {% if jugador.foto %}
+    <img src={{jugador.foto.url}} alt="Foto de {{ jugador.nombre }}" height = '350px' > 
+    {% else %} 
+    <img src="{% static 'img/fotito.jpg' %}" alt="Foto por defecto" height="350px">
+     {% endif %} 
+</li>
 <li>Nombre: {{jugador.nombre}}</li>
 <li>Apellido: {{jugador.apellido}}</li>
 <li>Categoria: {{jugador.categoria}}</li>

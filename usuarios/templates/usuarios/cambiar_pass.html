@@ -1,0 +1,14 @@
+{% extends "template_base.html" %}
+
+{% block title_head %}Cambiar contraseña{% endblock title_head %}
+{% block title %}Cambiar contraseña{% endblock title %}
+
+{% block contenido %}
+<div class="form-container">
+<form action="{% url 'cambiar_pass' %}" method="POST">
+    {% csrf_token %}
+    {{form}}
+    <input type="submit"value="Guardar cambios">
+</form>
+</div>
+{% endblock contenido %}

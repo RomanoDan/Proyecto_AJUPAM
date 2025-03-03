@@ -1,0 +1,23 @@
+{% extends "template_base.html" %}
+{% load static %}
+{% block title_head %}Ver Perfil{% endblock title_head %}
+{% block title %}Informacion de {{request.user}}{% endblock title %}
+
+{% block contenido %}
+<ul class = 'info-list'>
+    <li>{% if request.user.infoextra.avatar %}
+        <img src={{request.user.infoextra.avatar.url}} alt="" height = '350px' >
+        {% else %} 
+        <img src="{% static 'img/fotito.jpg' %}" alt="Foto por defecto" height="350px">
+        {% endif %}</li>
+    <li>Nombre: {{request.user.first_name}}</li>
+    <li>Apellido: {{request.user.last_name}}</li>
+    <li>Fecha de creación: {{request.user.date_joined}}</li>
+    <li>Sobre ti: {{request.user.infoextra.sobre_ti}}</li>
+    
+    
+    <a href="{% url 'editar_perfil' request.user.id %}" class="action-btn edit-btn">📝</a>
+    
+    
+    </ul>
+{% endblock contenido %}

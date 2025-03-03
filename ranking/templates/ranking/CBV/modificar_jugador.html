@@ -4,7 +4,7 @@
 {% block title %}Modificar Jugador{% endblock title %}
 {% block contenido %}
 <div class="form-container">
-    <form action="" method="POST">
+    <form action="" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{form}}
         <input type="submit"value="Guardar cambios">

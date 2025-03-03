@@ -11,5 +11,5 @@ urlpatterns = [
     # path('modificar-jugador/<int:jugador_id>', modificar_jugador, name="modificar_jugador"),
     # CBV
     path('eliminar-jugador/<int:pk>/', EliminarJugadorView.as_view(), name="eliminar_jugador"),
-    path('modificar-jugador/<int:pk>', ModificarJugadorView.as_view(), name="modificar_jugador"),
+    path('modificar-jugador/<int:pk>/', ModificarJugadorView.as_view(), name="modificar_jugador"),
 ]
