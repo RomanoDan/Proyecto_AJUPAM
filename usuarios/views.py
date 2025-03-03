@@ -16,8 +16,9 @@ def login (request):
 
             django_login(request, usuario)
             InfoExtra.objects.get_or_create(user=usuario)
+            next_url = request.POST.get("next") or "/"
 
-            return redirect('inicio')
+            return redirect(next_url)
     else:
         formulario = AuthenticationForm()
     
@@ -55,8 +56,15 @@ def editar_perfil(request,user_id):
             info_extra.save()
             formulario.save()
             return redirect('inicio')
+        
     else:
-        formulario = FormEdicionUsuario(instance=perfil)
+        initial_data = {}
+        if info_extra:
+            initial_data = {
+                'avatar': info_extra.avatar,
+                'sobre_ti': info_extra.sobre_ti
+            }
+        formulario = FormEdicionUsuario(instance=perfil, initial=initial_data)
     
     return render(request, 'usuarios/editar_perfil.html', {'formulario': formulario})
 
