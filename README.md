@@ -26,10 +26,13 @@ Ademas se podrá hacer seguimiento de los distintos torneos que se van realizand
 
 ## 🛠️ Funcionalidades
 
-En el inicio de la web, tendrás la opción de navegar por las opciones disponibles de la web.
+En el inicio de la web, tendrás la opción de navegar por las opciones disponibles:
 
 **Listado de Jugadores:**
         En este apartado se podrá visualizar los jugadores cargados en la base de datos y filtrar la busqueda por nombre o categoria.
 
 **Agregar Jugador:**
         En este apartado se podrá realizar la carga de un Jugador nuevo a la base de datos con sus correspondientes datos.
+
+**Identificación de usuario:**
+        En la web tendrás tambien la posibilidad de registrarte e ingresar, para así poder realizar las funciones de la web.
