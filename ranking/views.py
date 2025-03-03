@@ -14,7 +14,7 @@ def ranking(request):
         nombre_a_buscar = formulario.cleaned_data.get('nombre')
         categoria_a_buscar = formulario.cleaned_data.get('categoria')
         if categoria_a_buscar == '':
-            jugadores = Jugador.objects.all().order_by('-puntos')
+            jugadores = Jugador.objects.filter(nombre__icontains=nombre_a_buscar).order_by('-puntos')
         else:
             jugadores = Jugador.objects.filter(nombre__icontains=nombre_a_buscar).order_by('-puntos')
             jugadores = Jugador.objects.filter(categoria=categoria_a_buscar).order_by('-puntos')
@@ -22,6 +22,9 @@ def ranking(request):
 
 def inicio(request):
     return render(request, "ranking/inicio.html")
+
+def about(request):
+    return render(request, "ranking/about.html")
 
 @login_required
 def agregar_jugador(request):
