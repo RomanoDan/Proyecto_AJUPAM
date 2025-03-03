@@ -17,7 +17,7 @@ class FormEdicionUsuario(UserChangeForm):
     email = forms.EmailField()
     first_name = forms.CharField(label='Nombre')
     last_name = forms.CharField(label='Apellido')
-    avatar = forms.ImageField(required=False)
+    avatar = forms.ImageField(required=False,widget=forms.FileInput)
     sobre_ti = forms.CharField(required=False)
 
     class Meta:

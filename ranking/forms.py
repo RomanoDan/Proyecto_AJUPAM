@@ -24,6 +24,11 @@ class BuscarJugador(forms.Form):
 
 class ModificarJugador(forms.ModelForm):
     fecha_creacion = forms.DateField(required=False, widget=forms.DateInput(attrs={'type': 'date'}))
+    foto = forms.ImageField(required=False,widget=forms.FileInput)
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        if self.instance and self.instance.pk:  # Solo si el jugador ya existe
+            self.fields['fecha_creacion'].initial = self.instance.fecha_creacion  
     class Meta:
         model = Jugador
         fields = "__all__"
