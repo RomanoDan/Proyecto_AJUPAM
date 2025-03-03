@@ -18,6 +18,8 @@
 <li>Puntos: {{jugador.puntos}}</li>
 <li>Participaciones: {{jugador.participaciones}}</li>
 <li>Fecha de creacion: {{jugador.fecha_creacion}}</li>
+<a href="{% url 'modificar_jugador' jugador.id %}" class="action-btn edit-btn">📝</a>
+<a href="{% url 'eliminar_jugador' jugador.id %}" class="action-btn delete-btn">❌</a>
 
 </ul>
 {% endblock contenido %}
