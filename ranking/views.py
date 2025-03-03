@@ -16,8 +16,7 @@ def ranking(request):
         if categoria_a_buscar == '':
             jugadores = Jugador.objects.filter(nombre__icontains=nombre_a_buscar).order_by('-puntos')
         else:
-            jugadores = Jugador.objects.filter(nombre__icontains=nombre_a_buscar).order_by('-puntos')
-            jugadores = Jugador.objects.filter(categoria=categoria_a_buscar).order_by('-puntos')
+            jugadores = Jugador.objects.filter(nombre__icontains=nombre_a_buscar, categoria=categoria_a_buscar).order_by('-puntos')
     return render(request, 'ranking/ranking.html', {'jugadores': jugadores, 'formulario': formulario})
 
 def inicio(request):
